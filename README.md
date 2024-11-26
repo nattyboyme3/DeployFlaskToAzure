@@ -13,9 +13,9 @@
     ```
 2. Create Azure Container Repo
     ```shell
-   az login
-   az acr create --resource-group containers-for-days --name testflask20241126containerrepo --sku Basic
+   az login   
    az group create -l eastus --name containers-for-days
+   az acr create --resource-group containers-for-days --name testflask20241126containerrepo --sku Basic
    az acr login -n testflask20241126containerrepo  
    az acr update -n testflask20241126containerrepo --admin-enabled true
     ```
