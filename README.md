@@ -2,7 +2,7 @@
 
 1. Create `./Dockerfile`:
     ```dockerfile
-    FROM python:3.9
+    FROM --platform=linux/amd64 python:3.9-slim-buster  as build
     LABEL authors="your_username"
     WORKDIR /app
     COPY requirements.txt requirements.txt

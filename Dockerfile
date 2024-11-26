@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM --platform=linux/amd64 python:3.9-slim-buster  as test-flask-build
 LABEL authors="nbiggs112"
 
 WORKDIR /app
