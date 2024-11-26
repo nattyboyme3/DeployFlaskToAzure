@@ -23,11 +23,11 @@
     ```shell
     docker build . -t test-flask:1
     docker tag test-flask:1 testflask20241126containerrepo.azurecr.io/test-flask:latest
-    docker push testflask20241126containerrepo.azurecr.io/test-flask:1
+    docker push testflask20241126containerrepo.azurecr.io/test-flask:latest
     ```
 4. Push Docker image to the repo
     ```shell
-    docker push testflask20241126containerrepo.azurecr.io/test-flask:1
+    docker push testflask20241126containerrepo.azurecr.io/test-flask:latest
     ```
 5. Set up Linux App Service
     ```shell
@@ -35,7 +35,7 @@
     ```
 6. Set up WebApp
     ```shell
-    az webapp create -g containers-for-days -n testappservice --plan testappserviceplan --deployment-container-image-name testflask20241126containerrepo.azurecr.io/test-flask:1
+    az webapp create -g containers-for-days -n testappservice --plan testappserviceplan --deployment-container-image-name testflask20241126containerrepo.azurecr.io/test-flask:latest
     az webapp config appsettings set -g containers-for-days -n test-flask-20241126 --settings WEBSITES_PORT=5000
     az webapp restart -g containers-for-days -n test-flask-20241126
     ```
