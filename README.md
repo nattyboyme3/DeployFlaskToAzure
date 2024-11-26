@@ -2,13 +2,14 @@
 
 1. Create `./Dockerfile`:
     ```dockerfile
-    FROM --platform=linux/amd64 python:3.9-slim-buster  as build
+    FROM --platform=linux/amd64 python:3.9-slim-buster as test-flask
     LABEL authors="your_username"
     WORKDIR /app
     COPY requirements.txt requirements.txt
     RUN pip install --no-cache-dir -r requirements.txt
     COPY . .
-    EXPOSE 5000 # change for your specific app
+    # change for your specific app
+    EXPOSE 5000
     CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
     ```
 2. Create Azure Container Repo
