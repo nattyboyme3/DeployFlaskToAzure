@@ -1,5 +1,5 @@
-.idea/
 .venv/
 __pycaches__/
 .env
 *.ini
+.idea
