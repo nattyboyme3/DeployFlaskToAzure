@@ -1,5 +1,19 @@
 # Deploying a Flask app to Azure as a container
-
+1. Create `./app.py`:
+   ```python
+   from flask import Flask,request
+   app = Flask(__name__)
+   
+   
+   @app.route('/')
+   def hello_world():  # put application's code here
+       micah = request.args.get('micah')
+       if micah:
+           return "Hello Micah!"
+       return 'Hello World!'
+   if __name__ == '__main__':
+       app.run()
+   ```
 1. Create `./Dockerfile`:
     ```dockerfile
     FROM --platform=linux/amd64 python:3.9-slim-buster as test-flask
@@ -36,11 +50,17 @@
     az webapp config appsettings set -g containers-for-days -n test-flask-20241126 --settings WEBSITES_PORT=5000
     az webapp restart -g containers-for-days -n test-flask-20241126
     ```
-   
 7. Done!
 
 # Deploying a Streamlit app to Azure as a container
-
+1. Create `./mystreamlitapp.py`:
+   ```python
+   import streamlit as st
+   st.write("""
+   # My first app
+   This is a test for Micah.
+   """)
+   ```
 1. Create `./Dockerfile-Streamlit`:
     ```dockerfile
     FROM --platform=linux/amd64 python:3.9-slim-buster  as test-streamlit-build
