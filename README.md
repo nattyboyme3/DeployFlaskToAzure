@@ -39,10 +39,14 @@
     ```
 3. Build and push docker image: 
     ```shell
-    docker build . -t test-flask:1
-    docker tag test-flask:1 testflask20241126containerrepo.azurecr.io/test-flask:latest
+    docker build . -t test-flask:latest
+    docker tag test-flask:latest testflask20241126containerrepo.azurecr.io/test-flask:latest
     docker push testflask20241126containerrepo.azurecr.io/test-flask:latest
     ```
+4. Test locally with: 
+   ```shell
+   docker run -p 8501:8501 test-flask:latest
+   ```
 5. Set up Linux App Service
     ```shell
     az appservice plan create --name ASP-containers-for-days --location eastus --resource-group containers-for-days --sku B1 --is-linux 
@@ -98,11 +102,15 @@
     docker tag test-streamlit:latest teststreamlit20241126containerrepo.azurecr.io/test-streamlit:latest
     docker push teststreamlit20241126containerrepo.azurecr.io/test-streamlit:latest
     ```
+4. Test locally with: 
+   ```shell
+   docker run -p 8501:8501 test-streamlit:latest
+   ```
 5. Set up Linux App Service
     ```shell
     az appservice plan create --name ASP-containers-for-days --location eastus --resource-group containers-for-days --sku B1 --is-linux 
     ```
-6. Set up WebApp (use the port your application listens on instead of 5000)
+6. Set up WebApp (use the port your application listens on instead of 8501)
     ```shell
     az webapp create -g containers-for-days -n test-streamlit-20241126 --plan ASP-containers-for-days --container-image-name teststreamlit20241126containerrepo.azurecr.io/test-streamlit:latest
     az webapp config appsettings set -g containers-for-days -n test-streamlit-20241126 --settings WEBSITES_PORT=8501
