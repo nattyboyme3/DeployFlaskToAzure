@@ -26,9 +26,12 @@
     EXPOSE 5000
     CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
     ```
+2. Log in to azure CLI with: 
+   ```shell
+   az login
+   ```
 2. Create Azure Container Repo
     ```shell
-   az login   
    az group create -l eastus --name containers-for-days
    az acr create --resource-group containers-for-days --name testflask20241126containerrepo --sku Basic
    az acr login -n testflask20241126containerrepo  
@@ -77,7 +80,11 @@
    
    CMD [ "python3", "-m" , "streamlit", "run", "app.py"]
     ```
-2. Create Azure Container Repo
+2. Log in to azure CLI with: 
+   ```shell
+   az login
+   ```
+1. Create Azure Container Repo
     ```shell
    az login   
    az group create -l eastus --name containers-for-days
@@ -107,5 +114,5 @@
 # Cleaning up
 To remove all resources: 
    ```shell
-    az group remove -l eastus --name containers-for-days -y
+    az group delete --resource-group containers-for-days -y
    ```
